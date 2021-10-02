@@ -91,8 +91,8 @@ def app():
         tf.hatespeech_detection(df_tweets, 'clean_text')
 
         # Select columns to output
-        df_hs = df_tweets[['created_at', 'full_text', 'Label']]
-        df_hs = df_hs.rename(columns = {"created_at": "Date & Time", "full_text": "Tweets"})
+        df_hs = df_tweets[['created_dttime', 'full_text', 'Label']]
+        df_hs = df_hs.rename(columns = {"created_dttime": "Datetime", "full_text": "Tweets"})
 
         hs_group = df_hs.groupby('Label').agg({'Label': 'count'}).transpose()
 

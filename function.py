@@ -114,6 +114,7 @@ def twitter_get(select_hashtag_keyword, user_word_entry, num_of_tweets):
     tweet_metadata = [[tweet.created_at, tweet.id, tweet.user.screen_name, tweet.full_text] for tweet in tweets]
     df_tweets = pd.DataFrame(data=tweet_metadata, columns=['created_at', 'id', 'user', 'full_text'])
 
+    df_tweets['created_dttime'] = df_tweets['created_at'].apply(lambda x: x.strftime('%a %b %d %Y %X'))
     # Create a new text variable to do manipulations on 
     df_tweets['clean_text'] = df_tweets.full_text
 
