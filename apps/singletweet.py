@@ -28,7 +28,7 @@ def app():
                 st.success(f"Teks tersebut hasilnya: **{hasil}** dengan **{probability}%** probability")
         
             else:
-                st.write('[INFO] Tidak ada teks.. Silakan masukkan teks terlebih dahulu')
+                st.warning('[INFO] Tidak ada teks.. Silakan masukkan teks terlebih dahulu')
 
 
 
