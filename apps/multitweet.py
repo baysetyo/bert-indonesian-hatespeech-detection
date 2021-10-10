@@ -93,9 +93,13 @@ def app():
         # Select columns to output
         df_hs = df_tweets[['created_dttime', 'full_text', 'Label']]
         df_hs = df_hs.rename(columns = {"created_dttime": "Datetime", "full_text": "Tweets"})
-
         hs_group = df_hs.groupby('Label').agg({'Label': 'count'}).transpose()
 
+        df_new = df_tweets[["created_dttime", "id", "user", "full_text", "clean_text", "Label", "Probability"]]
+        df_new = df_new.rename(columns = {"created_dttime": "Date & Time", 
+                                 "user": "Username", 
+                                  "full_text": "Tweet", 
+                                  "clean_text": "Clean Tweet"})
 
         ## 4.2.1: Summary Card Metrics
         ##----------------------------------##
@@ -107,4 +111,4 @@ def app():
             })
         st_material_table(df_hs)
         st.markdown("**Untuk lebih lengkap dapat mengunduh file csv dibawah ini**")
-        st.markdown(tf.get_table_download_link(df_tweets), unsafe_allow_html=True)
+        st.markdown(tf.get_table_download_link(df_new), unsafe_allow_html=True)
