@@ -187,13 +187,12 @@ def hatespeech_detection(df, data_column):
     prob = []
     for index, row in df.iterrows():
 
-        encoded_inputs = tokenizer.encode_plus(str(row[data_column]), add_special_tokens=True, return_token_type_ids=True)
-        subwords, token_type_ids = encoded_inputs["input_ids"], encoded_inputs["token_type_ids"]
+        encoded_inputs = tokenizer.encode_plus(str(row[data_column]), add_special_tokens=True)
+        subwords, token_type_ids = encoded_inputs["input_ids"]
                             
         subwords = torch.LongTensor(subwords).view(1, -1).to(model.device)
-        token_type_ids = torch.LongTensor(token_type_ids).view(1, -1).to(model.device)
                             
-        logits = model(subwords, token_type_ids=token_type_ids)[0]
+        logits = model(subwords)[0]
         label = torch.topk(logits, k=1, dim=-1)[1].squeeze().item()
         probability = f"{F.softmax(logits, dim=-1).squeeze()[label] * 100:.3f}%"
 
@@ -205,13 +204,12 @@ def hatespeech_detection(df, data_column):
     return df
 
 def single_hatespeech_detection(text):
-    encoded_inputs = tokenizer.encode_plus(text, add_special_tokens=True, return_token_type_ids=True)
-    subwords, token_type_ids = encoded_inputs["input_ids"], encoded_inputs["token_type_ids"]
+    encoded_inputs = tokenizer.encode_plus(text, add_special_tokens=True)
+    subwords, token_type_ids = encoded_inputs["input_ids"]
                             
     subwords = torch.LongTensor(subwords).view(1, -1).to(model.device)
-    token_type_ids = torch.LongTensor(token_type_ids).view(1, -1).to(model.device)
                             
-    logits = model(subwords, token_type_ids=token_type_ids)[0]
+    logits = model(subwords)[0]
     label = torch.topk(logits, k=1, dim=-1)[1].squeeze().item()
     probability = f"{F.softmax(logits, dim=-1).squeeze()[label] * 100:.3f}"
 
