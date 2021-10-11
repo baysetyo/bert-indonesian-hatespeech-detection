@@ -11,30 +11,16 @@ import function as tf
 
 
 def app():
-    # 2.1: Main Panel Setup
-    #------------------------------------#
-    
-    ## 2.1.3: Main Title
-    ##----------------------------------##
-    #st.title('Tweet Analyzer') #
     st.title('Deteksi Hate Speech Bahasa Indonesia Multi Tweet')
-
 
     st.markdown("""
     Cari hashtag atau keyword Twitter di sidebar untuk menjalankan deteksi hate speech!
     """)
-
-    #~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=
-
     # 2.2: Sidebar Setup
-    #------------------------------------#
-
     ## 2.1.1: Sidebar Title
-    ##----------------------------------##
     st.sidebar.header('Pilih Masukkan Pencarian') #sidebar title
 
     ## 2.2.2: Sidebar Input Fields
-    ##----------------------------------##
     with st.form(key ='form_1'):
         with st.sidebar:
             user_word_entry = st.text_input("1. Masukkan satu hashtag atau keyword", help='Pastikan hashtag atau kata kunci tidak mengandung spasi')    
@@ -57,11 +43,7 @@ def app():
         user_num_tweets =str(num_of_tweets)
         total_tweets = len(df_tweets['full_text'])
 
-
-
     # 4.1: UX Messaging
-    #------------------------------------#
-
         # Loading message for users
         with st.spinner('Mengambil data dari Twitter...'):
             time.sleep(5)
@@ -77,14 +59,8 @@ def app():
                     user_num_tweets + 
                     ' tweets yang menggunakan kata kunci ' + 
                     user_word_entry)
-
-    #~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=~-=
-
-
-    # 4.2: Sentiment Analysis
-    #------------------------------------#
-
-    # Subtitle
+                
+    # 4.2: Hate Speech Detection
         st.header('Deteksi Hate Speech')
 
         # Get sentiment scores on raw tweets
@@ -102,8 +78,6 @@ def app():
                                   "clean_text": "Clean Tweet"})
 
         ## 4.2.1: Summary Card Metrics
-        ##----------------------------------##
-
         st.subheader('Summary')
         metric_row({
                 "% 🤬 Hate Speech Tweets": "{:.0%}".format(max(hs_group.HateSpeech)/total_tweets),
