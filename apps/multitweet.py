@@ -109,6 +109,6 @@ def app():
                 "% 🤬 Hate Speech Tweets": "{:.0%}".format(max(hs_group.HateSpeech)/total_tweets),
                 "% 😃 Non Hate Speech Tweets": "{:.0%}".format(max(hs_group.NonHateSpeech)/total_tweets),
             })
-
+        st_material_table(df_hs)
         st.markdown("**Untuk lebih lengkap dapat mengunduh file csv dibawah ini**")
         st.markdown(tf.get_table_download_link(df_new), unsafe_allow_html=True)
