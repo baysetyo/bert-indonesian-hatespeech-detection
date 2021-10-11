@@ -192,7 +192,7 @@ def hatespeech_detection(df, data_column):
                             
         subwords = torch.LongTensor(subwords).view(1, -1).to(model.device)
                             
-        logits = model(subwords)[0]
+        logits = model(subwords)
         label = torch.topk(logits, k=1, dim=-1)[1].squeeze().item()
         probability = f"{F.softmax(logits, dim=-1).squeeze()[label] * 100:.3f}%"
 
@@ -209,7 +209,7 @@ def single_hatespeech_detection(text):
                             
     subwords = torch.LongTensor(subwords).view(1, -1).to(model.device)
                             
-    logits = model(subwords)[0]
+    logits = model(subwords)
     label = torch.topk(logits, k=1, dim=-1)[1].squeeze().item()
     probability = f"{F.softmax(logits, dim=-1).squeeze()[label] * 100:.3f}"
 
