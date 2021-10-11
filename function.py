@@ -205,7 +205,7 @@ def hatespeech_detection(df, data_column):
 
 def single_hatespeech_detection(text):
     encoded_inputs = tokenizer.encode_plus(text, add_special_tokens=True)
-    subwords, input_token_ids = encoded_inputs["input_ids"]
+    subwords = encoded_inputs["input_ids"]
                             
     subwords = torch.LongTensor(subwords).view(1, -1).to(model.device)
                             
