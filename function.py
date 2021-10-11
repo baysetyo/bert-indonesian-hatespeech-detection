@@ -182,7 +182,7 @@ def labelling(result):
     else: 
         return 'NonHateSpeech'
 
-def hatespeech_detection(df, data_column):
+def multi_hatespeech_detection(df, data_column):
     label_hs = []
     prob = []
     for index, row in df.iterrows():
