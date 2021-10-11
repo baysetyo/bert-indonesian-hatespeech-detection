@@ -64,7 +64,7 @@ def app():
         st.header('Deteksi Hate Speech')
 
         # Get sentiment scores on raw tweets
-        tf.hatespeech_detection(df_tweets, 'clean_text')
+        tf.multi_hatespeech_detection(df_tweets, 'clean_text')
 
         # Select columns to output
         df_hs = df_tweets[['created_dttime', 'full_text', 'Label']]
