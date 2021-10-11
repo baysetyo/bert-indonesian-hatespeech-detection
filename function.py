@@ -105,7 +105,7 @@ def twitter_get(select_hashtag_keyword, user_word_entry, num_of_tweets):
 
     # Retweets (assumes yes)
     user_word = user_word + ' -filter:retweets'
-    tweets = tw.Cursor(api.search,
+    tweets = tw.Cursor(api.search_tweets,
                         q=user_word,
                         tweet_mode = "extended",
                         lang='id').items(num_of_tweets)
