@@ -76,9 +76,8 @@ def app():
                                   "clean_text": "Clean Tweet"})
         
         test = hs_group.HateSpeech
-        if test is None:
-            test = 0
-        st.write(test)
+        if test.empty:
+            st.write("Dataframe is Empty!")
 
         ## 4.2.1: Summary Card Metrics
         st.subheader('Summary')
