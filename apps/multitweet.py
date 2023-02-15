@@ -74,6 +74,10 @@ def app():
                                  "user": "Username", 
                                   "full_text": "Tweet", 
                                   "clean_text": "Clean Tweet"})
+        
+        test = hs_group.HateSpeech
+        
+        st.write(test)
 
         ## 4.2.1: Summary Card Metrics
         st.subheader('Summary')
