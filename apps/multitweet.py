@@ -76,7 +76,8 @@ def app():
                                   "clean_text": "Clean Tweet"})
         
         test = hs_group.HateSpeech
-        
+        if test is None:
+            test = 0
         st.write(test)
 
         ## 4.2.1: Summary Card Metrics
