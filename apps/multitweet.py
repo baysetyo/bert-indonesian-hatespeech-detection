@@ -74,14 +74,13 @@ def app():
                                  "user": "Username", 
                                   "full_text": "Tweet", 
                                   "clean_text": "Clean Tweet"})
-        
-        df_hs['Label'] = df_hs['Label'].replace(['NonHateSpeech', 'HateSpeech'], ['Non Hate Speech', 'Hate Speech'])
+       
       
         ## 4.2.1: Summary Card Metrics
         st.subheader('Summary')
         metric_row({
-                "% 🤬 Hate Speech Tweets": "{:.0%}".format(max(total_tweets-(hs_group.NonHateSpeech))/total_tweets),
-                "% 😃 Non Hate Speech Tweets": "{:.0%}".format(max(hs_group.NonHateSpeech)/total_tweets),
+                "% 🤬 Hate Speech Tweets": "{:.0%}".format(max(total_tweets-(hs_group['Non Hate Speech']))/total_tweets),
+                "% 😃 Non Hate Speech Tweets": "{:.0%}".format(max(hs_group['Non Hate Speech'])/total_tweets),
             })
         st_material_table(df_hs)
         st.markdown("**Untuk lebih lengkap dapat mengunduh file csv dibawah ini**")
