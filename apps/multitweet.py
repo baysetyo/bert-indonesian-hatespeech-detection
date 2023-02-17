@@ -49,16 +49,24 @@ def app():
             time.sleep(5)
             # Keyword or hashtag
             if select_hashtag_keyword == 'Hashtag':
-                st.success('🎈Done! Anda telah mencari ' + 
-                    user_num_tweets + 
-                    ' tweets terakhir yang menggunakan #' + 
-                    user_word_entry)
+                if total_tweets > 0:
+                    st.success('🎈Done! Anda mendapatkan ' +
+                        total_tweets +
+                        ' tweets yang menggunakan #' + 
+                        user_word_entry)
+                else:
+                    st.warning('Maaf # ' + user_word_entry + 'yang anda cari tidak ditemukan!')
+                    st.stop()
 
             else:
-                st.success('🎈Done! Anda telah mencari ' + 
-                    user_num_tweets + 
-                    ' tweets yang menggunakan kata kunci ' + 
-                    user_word_entry)
+                if total_tweets > 0:
+                    st.success('🎈Done! Anda mendapatkan ' +
+                        total_tweets +
+                        ' tweets yang menggunakan kata kunci ' + 
+                        user_word_entry)
+               else:
+                    st.warning('Maaf #' + user_word_entry + 'yang anda cari tidak ditemukan!')
+                    st.stop()
                 
     # 4.2: Hate Speech Detection
         st.header('Deteksi Hate Speech')
