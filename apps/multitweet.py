@@ -74,6 +74,8 @@ def app():
                                  "user": "Username", 
                                   "full_text": "Tweet", 
                                   "clean_text": "Clean Tweet"})
+        
+        df_hs['Label'] = df_hs['Label'].replace(['NonHateSpeech', 'HateSpeech'], ['Non Hate Speech', 'Hate Speech'])
       
         ## 4.2.1: Summary Card Metrics
         st.subheader('Summary')
