@@ -74,15 +74,11 @@ def app():
                                  "user": "Username", 
                                   "full_text": "Tweet", 
                                   "clean_text": "Clean Tweet"})
-        
-        test = hs_group.HateSpeech
-        if test.empty:
-            st.write("Dataframe is Empty!")
-
+      
         ## 4.2.1: Summary Card Metrics
         st.subheader('Summary')
         metric_row({
-                "% 🤬 Hate Speech Tweets": "{:.0%}".format(max(hs_group.HateSpeech)/total_tweets),
+                "% 🤬 Hate Speech Tweets": "{:.0%}".format(max(total_tweets-(hs_group.NonHateSpeech))/total_tweets),
                 "% 😃 Non Hate Speech Tweets": "{:.0%}".format(max(hs_group.NonHateSpeech)/total_tweets),
             })
         st_material_table(df_hs)
