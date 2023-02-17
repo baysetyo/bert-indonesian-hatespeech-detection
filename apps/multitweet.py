@@ -51,7 +51,7 @@ def app():
             if select_hashtag_keyword == 'Hashtag':
                 if total_tweets > 0:
                     st.success('🎈Done! Anda mendapatkan ' +
-                        total_tweets +
+                        str(total_tweets) +
                         ' tweets yang menggunakan #' + 
                         user_word_entry)
                 else:
@@ -61,7 +61,7 @@ def app():
             else:
                 if total_tweets > 0:
                     st.success('🎈Done! Anda mendapatkan ' +
-                        total_tweets +
+                        str(total_tweets) +
                         ' tweets yang menggunakan kata kunci ' + 
                         user_word_entry)
                 else:
