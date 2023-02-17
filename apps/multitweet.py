@@ -64,7 +64,7 @@ def app():
                         total_tweets +
                         ' tweets yang menggunakan kata kunci ' + 
                         user_word_entry)
-               else:
+                else:
                     st.warning('Maaf #' + user_word_entry + 'yang anda cari tidak ditemukan!')
                     st.stop()
                 
