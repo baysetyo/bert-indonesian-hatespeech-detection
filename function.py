@@ -178,9 +178,9 @@ preprocess = lambda x: preprocessing(x)
 
 def labelling(result):
     if result == 1:
-        return 'HateSpeech'
+        return 'Hate Speech'
     else: 
-        return 'NonHateSpeech'
+        return 'Non Hate Speech'
 
 def multi_hatespeech_detection(df, data_column):
     label_hs = []
